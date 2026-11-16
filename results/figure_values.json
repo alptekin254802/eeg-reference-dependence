@@ -1,0 +1,292 @@
+{
+  "formatting": "Displayed estimates rounded to 3 decimal places; positions and intervals use full precision.",
+  "values": [
+    {
+      "pointer": "/classification/fixed30~1eegnet~1linked_basic~1ensemble3~1split20261109~1final/auc",
+      "value": 0.8621106337271751
+    },
+    {
+      "pointer": "/classification/fixed30~1eegnet~1linked_basic~1ensemble3~1split20261109~1final/auc_ci95",
+      "value": [
+        0.810140306122449,
+        0.9100496777658431
+      ]
+    },
+    {
+      "pointer": "/classification/fixed30~1eegnet~1average_basic~1ensemble3~1split20261109~1final/auc",
+      "value": 0.6729323308270677
+    },
+    {
+      "pointer": "/classification/fixed30~1eegnet~1average_basic~1ensemble3~1split20261109~1final/auc_ci95",
+      "value": [
+        0.5888661385606874,
+        0.7587473147153597
+      ]
+    },
+    {
+      "pointer": "/common_component_retraining/metrics/common_only_ensemble/auc",
+      "value": 0.7718850698174007
+    },
+    {
+      "pointer": "/common_component_retraining/metrics/common_only_ensemble/ci95",
+      "value": [
+        0.6997616809881848,
+        0.8398294844253491
+      ]
+    },
+    {
+      "pointer": "/classification/age_sex_matched~1eegnet~1linked_basic~1seed1109~1split20261109~1final/auc",
+      "value": 0.8386479591836735
+    },
+    {
+      "pointer": "/classification/age_sex_matched~1eegnet~1linked_basic~1seed1109~1split20261109~1final/auc_ci95",
+      "value": [
+        0.7512755102040817,
+        0.9190130739795918
+      ]
+    },
+    {
+      "pointer": "/classification/age_sex_matched~1eegnet~1average_basic~1seed1109~1split20261109~1final/auc",
+      "value": 0.5401785714285714
+    },
+    {
+      "pointer": "/classification/age_sex_matched~1eegnet~1average_basic~1seed1109~1split20261109~1final/auc_ci95",
+      "value": [
+        0.44068877551020413,
+        0.635204081632653
+      ]
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/common_delta_log10_power/geometric_ratio",
+      "value": 0.6110801537883174
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/common_delta_log10_power/geometric_ratio_ci95",
+      "value": [
+        0.5136435768064281,
+        0.7341945405815158
+      ]
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/common_theta_log10_power/geometric_ratio",
+      "value": 0.6366621650853675
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/common_theta_log10_power/geometric_ratio_ci95",
+      "value": [
+        0.5152512673590582,
+        0.7875416975199687
+      ]
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/common_alpha_log10_power/geometric_ratio",
+      "value": 0.5477769607681414
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/common_alpha_log10_power/geometric_ratio_ci95",
+      "value": [
+        0.4182338977163673,
+        0.7149031000865181
+      ]
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/common_beta_log10_power/geometric_ratio",
+      "value": 0.46489298236686566
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/common_beta_log10_power/geometric_ratio_ci95",
+      "value": [
+        0.3808137572019973,
+        0.5676042609327452
+      ]
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/common_gamma_log10_power/geometric_ratio",
+      "value": 0.36627413915203716
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/common_gamma_log10_power/geometric_ratio_ci95",
+      "value": [
+        0.2699903952664398,
+        0.5054762525257479
+      ]
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/common_total_1_40_log10_power/geometric_ratio",
+      "value": 0.5714449294450477
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/common_total_1_40_log10_power/geometric_ratio_ci95",
+      "value": [
+        0.4799224879136791,
+        0.6785546829043301
+      ]
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/car_delta_log10_power/geometric_ratio",
+      "value": 0.8738885931879581
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/car_delta_log10_power/geometric_ratio_ci95",
+      "value": [
+        0.7249503081361961,
+        1.0627915620645325
+      ]
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/car_theta_log10_power/geometric_ratio",
+      "value": 0.9637650918027078
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/car_theta_log10_power/geometric_ratio_ci95",
+      "value": [
+        0.7750464771237077,
+        1.1979262712999248
+      ]
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/car_alpha_log10_power/geometric_ratio",
+      "value": 0.839784383319354
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/car_alpha_log10_power/geometric_ratio_ci95",
+      "value": [
+        0.6047095169166695,
+        1.1654817141212979
+      ]
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/car_beta_log10_power/geometric_ratio",
+      "value": 0.8794618026108436
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/car_beta_log10_power/geometric_ratio_ci95",
+      "value": [
+        0.7343487488467374,
+        1.0569606512943726
+      ]
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/car_gamma_log10_power/geometric_ratio",
+      "value": 0.7940989292101813
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/car_gamma_log10_power/geometric_ratio_ci95",
+      "value": [
+        0.650065377387955,
+        0.9752545535709993
+      ]
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/car_total_1_40_log10_power/geometric_ratio",
+      "value": 0.8749874652941907
+    },
+    {
+      "pointer": "/common_component_power/cohorts/primary_186/features/car_total_1_40_log10_power/geometric_ratio_ci95",
+      "value": [
+        0.7158647609348077,
+        1.0698734676118837
+      ]
+    },
+    {
+      "pointer": "/common_bandpower_covariates/arms/B0/auc/estimate",
+      "value": 0.8015267175572519
+    },
+    {
+      "pointer": "/common_bandpower_covariates/arms/B0/auc/ci95",
+      "value": [
+        0.7317106176266481,
+        0.8650936849410131
+      ]
+    },
+    {
+      "pointer": "/common_bandpower_covariates/arms/BAge/auc/estimate",
+      "value": 0.8004163775156141
+    },
+    {
+      "pointer": "/common_bandpower_covariates/arms/BAge/auc/ci95",
+      "value": [
+        0.7307425399028452,
+        0.8641256072172099
+      ]
+    },
+    {
+      "pointer": "/common_bandpower_covariates/arms/BD/auc/estimate",
+      "value": 0.7118667591950034
+    },
+    {
+      "pointer": "/common_bandpower_covariates/arms/BD/auc/ci95",
+      "value": [
+        0.6298369188063845,
+        0.7884802220680083
+      ]
+    },
+    {
+      "pointer": "/common_bandpower_covariates/arms/BH/auc/estimate",
+      "value": 0.7036780013879251
+    },
+    {
+      "pointer": "/common_bandpower_covariates/arms/BH/auc/ci95",
+      "value": [
+        0.6208188757807078,
+        0.7816828591256069
+      ]
+    },
+    {
+      "pointer": "/common_bandpower_covariates/arms/BM/auc/estimate",
+      "value": 0.7547536433032617
+    },
+    {
+      "pointer": "/common_bandpower_covariates/arms/BM/auc/ci95",
+      "value": [
+        0.6823039555863983,
+        0.8226231783483692
+      ]
+    },
+    {
+      "pointer": "/pairwise_top_region_agreement/comparisons/basic~1IG~1own_predicted_class/aggregate/within_linked/kappa/estimate",
+      "value": 0.49407398119028473
+    },
+    {
+      "pointer": "/pairwise_top_region_agreement/comparisons/basic~1IG~1own_predicted_class/aggregate/within_linked/kappa/ci95_percentile",
+      "value": [
+        0.3274251243808315,
+        0.651788723960884
+      ]
+    },
+    {
+      "pointer": "/pairwise_top_region_agreement/comparisons/basic~1IG~1own_predicted_class/aggregate/within_average/kappa/estimate",
+      "value": 0.3977958215049169
+    },
+    {
+      "pointer": "/pairwise_top_region_agreement/comparisons/basic~1IG~1own_predicted_class/aggregate/within_average/kappa/ci95_percentile",
+      "value": [
+        0.2286796116929316,
+        0.5670578149306569
+      ]
+    },
+    {
+      "pointer": "/pairwise_top_region_agreement/comparisons/basic~1IG~1own_predicted_class/aggregate/within_pooled/kappa/estimate",
+      "value": 0.44593490134760083
+    },
+    {
+      "pointer": "/pairwise_top_region_agreement/comparisons/basic~1IG~1own_predicted_class/aggregate/within_pooled/kappa/ci95_percentile",
+      "value": [
+        0.32784040509009216,
+        0.5597865209085437
+      ]
+    },
+    {
+      "pointer": "/pairwise_top_region_agreement/comparisons/basic~1IG~1own_predicted_class/aggregate/cross_same_seed/kappa/estimate",
+      "value": 0.11104884001880409
+    },
+    {
+      "pointer": "/pairwise_top_region_agreement/comparisons/basic~1IG~1own_predicted_class/aggregate/cross_same_seed/kappa/ci95_percentile",
+      "value": [
+        0.018665165853704247,
+        0.20317883785458665
+      ]
+    }
+  ],
+  "source": "aggregate.json"
+}

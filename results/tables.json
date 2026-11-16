@@ -1,0 +1,1270 @@
+{
+  "description": "Supplement tables and linked technical-document tables; numbers retain the displayed manuscript precision.",
+  "tables": [
+    {
+      "id": "registration",
+      "caption": "Registration and coverage",
+      "columns": [
+        "Question/module",
+        "Status and article coverage"
+      ],
+      "rows": [
+        [
+          "Registration",
+          "OSF https://osf.io/u2w7d/, 10 November 2026, embargoed secondary-data registration. Initial source classification, explanation and common-component findings were known and disclosed; the source was not unseen data."
+        ],
+        [
+          "Primary methodological endpoint",
+          "Completed: additional-initialization ocular-regression faithfulness contrast (Section S6). Earlier initialization remains separate."
+        ],
+        [
+          "Primary external endpoint",
+          "Incomplete: Wroclaw physical units unconfirmed; provisional native-as-microvolt evaluation does not complete the verified-unit endpoint (Section S7)."
+        ],
+        [
+          "1--3 Training and predictors",
+          "Initializations, stopping, alternative folds, all five longer-training checkpoints, CNN and spectral comparisons completed (Section S3); selected probability/map summaries only."
+        ],
+        [
+          "4--7 Explanation controls",
+          "Background, full-cohort IG, parameter/label randomization, normalized/probability/energy perturbation, confidence/correctness, deletion and donor comparisons completed; details and coverage in docs/additional_analyses.md and results/aggregate.json. Full-cohort/panel comparison uses their 40-person overlap."
+        ],
+        [
+          "8--10 Components, transforms, covariates",
+          "Inference removal and reference robustness specified before execution with motivating source findings known. Component features, surface Laplacian, demographics/quality and training-only residualization completed (Sections S3--S5)."
+        ],
+        [
+          "11 Quality/clinical subsets",
+          "Strict-quality and matched fits completed. Diagnosis-independent acquisition mapping and adjudicated medication/comorbidity fields unavailable; corresponding subsets not constructed."
+        ],
+        [
+          "12 Temporal robustness",
+          "Early/late within-record comparisons completed; no independent test--retest cohort (docs/additional_analyses.md)."
+        ],
+        [
+          "13--14 External and conditional task cohorts",
+          "Wroclaw provisional classification reported; external explanation contrasts not presented. Conditional Woltering--Gu and Breitling analyses not undertaken."
+        ],
+        [
+          "15 Reproducibility",
+          "Predictions and implementation/numerical checks support reported analyses; coverage does not imply every registered diagnostic is presented."
+        ],
+        [
+          "Later exploratory analyses",
+          "Common-only neural retraining, common-power and auxiliary comparisons, archive/RMS controls, kappa and external power comparisons followed source outcome exposure; no new OSF preregistration. They do not replace either primary endpoint."
+        ]
+      ]
+    },
+    {
+      "id": "cohorts",
+      "caption": "Cohorts and analysis populations",
+      "columns": [
+        "Population",
+        "ADHD",
+        "Control",
+        "Measurement and role"
+      ],
+      "rows": [
+        [
+          "TDBRAIN source",
+          "56",
+          "133",
+          "Adult eyes-closed rest; 19 linked-mastoid channels, 500 Hz; source classification. Four controls excluded."
+        ],
+        [
+          "Auxiliary-eligible source",
+          "55",
+          "131",
+          "Same source; three records excluded by fixed auxiliary-signal criteria."
+        ],
+        [
+          "Explanation panel",
+          "20",
+          "20",
+          "Four people per diagnosis per outer fold; repeated across conditions."
+        ],
+        [
+          "Age/sex-matched source",
+          "56",
+          "56",
+          "Same recorded sex, age within three years; pair-preserving folds."
+        ],
+        [
+          "Wroclaw",
+          "8",
+          "8",
+          "Eyes-closed rest; 19 common scalp channels; external endpoint with unconfirmed physical units."
+        ],
+        [
+          "Nasrabadi",
+          "61",
+          "60",
+          "Age 7--12; visual attention task; 19 earlobe-referenced channels, 128 Hz."
+        ]
+      ]
+    },
+    {
+      "id": "definitions",
+      "caption": "Critical definitions for interpreting the comparisons",
+      "columns": [
+        "Quantity",
+        "Definition"
+      ],
+      "rows": [
+        [
+          "Inclusion",
+          "One decision across source arms: exclude nonfinite linked-mastoid channel-windows, SD <0.1 µV or peak-to-peak >1000 µV. No condition-specific window replacement."
+        ],
+        [
+          "Common/CAR",
+          "m=19^{-1}\\sum_jX_j; residual r_j=X_j-m. The common signal includes scalp-average and shared-reference contributions."
+        ],
+        [
+          "Prediction",
+          "Participant logit is the mean window logit. Five participant folds; training-only scalar normalization. External predictions average five source-fold probabilities."
+        ],
+        [
+          "Quality",
+          "Maximum peak-to-peak, fraction above 200 µV, median channel RMS, vertical/horizontal ocular RMS, maximum absolute EEG--ocular correlation; all before ocular regression. Strict quality: fraction ≤10% (N=187)."
+        ],
+        [
+          "Power",
+          "Welch two-second Hann segments, 50% overlap, 0.5-Hz bins; bands 1--4, 4--8, 8--13, 13--30, 30--40 Hz. Total 1--40 Hz power integrates bins before the logarithm, rather than summing band log-powers. Window log-powers averaged within person; CAR averages channel periodograms. Group ratio 10^{\\bar z_A-\\bar z_C}; Hedges' g uses pooled between-person SD."
+        ],
+        [
+          "Residualization",
+          "Training-only Ridge prediction of five standardized common bands from covariates, followed by standardized residuals and class-balanced logistic regression. Covariates enter jointly."
+        ],
+        [
+          "Faithfulness",
+          "Predicted-class logit drop after zeroing the top region minus mean drop from 100 channel-count-matched random masks; CAR perturbations reprojected to zero sum. Corrected-minus-uncorrected effect averages references and then additional initializations within person."
+        ],
+        [
+          "Regions",
+          "Frontal Fp1/Fp2/F7/F3/Fz/F4/F8; central C3/Cz/C4; temporal T7/T8; parietal P7/P3/Pz/P4/P8; occipital O1/O2. Ties follow this order."
+        ],
+        [
+          "Uncertainty",
+          "Diagnosis-stratified participant bootstrap; 2000 draws for core classification/faithfulness, 20,000 for power, covariate, auxiliary, kappa and RMS controls. Paired configurations resampled jointly; matching resamples pairs. Conditional on fitted models; pointwise, no multiplicity adjustment."
+        ]
+      ]
+    },
+    {
+      "id": "internal",
+      "caption": "Internal classification in TDBRAIN (189 participants)",
+      "columns": [
+        "Model",
+        "Processing",
+        "AUC [95% CI]",
+        "BA",
+        "Brier"
+      ],
+      "rows": [
+        [
+          "EEGNet",
+          "LM, no EOG",
+          "0.862 [0.810, 0.910]",
+          "0.812",
+          "0.171"
+        ],
+        [
+          "EEGNet",
+          "CAR, no EOG",
+          "0.673 [0.589, 0.759]",
+          "0.602",
+          "0.273"
+        ],
+        [
+          "EEGNet",
+          "LM, EOG",
+          "0.852 [0.795, 0.900]",
+          "0.808",
+          "0.181"
+        ],
+        [
+          "EEGNet",
+          "CAR, EOG",
+          "0.654 [0.569, 0.738]",
+          "0.614",
+          "0.270"
+        ],
+        [
+          "Temporal CNN",
+          "LM, no EOG",
+          "0.852 [0.793, 0.907]",
+          "0.811",
+          "0.168"
+        ],
+        [
+          "Temporal CNN",
+          "CAR, no EOG",
+          "0.705 [0.625, 0.789]",
+          "0.640",
+          "0.225"
+        ],
+        [
+          "Temporal CNN",
+          "LM, EOG",
+          "0.856 [0.798, 0.910]",
+          "0.839",
+          "0.163"
+        ],
+        [
+          "Temporal CNN",
+          "CAR, EOG",
+          "0.678 [0.594, 0.758]",
+          "0.633",
+          "0.232"
+        ]
+      ]
+    },
+    {
+      "id": "sensitivity",
+      "caption": "EEGNet discrimination under training and cohort sensitivities",
+      "columns": [
+        "Condition",
+        "Acq.",
+        "Avg.",
+        "Acq.+EOG",
+        "Avg.+EOG"
+      ],
+      "rows": [
+        [
+          "Fixed 30, seed 1109",
+          "0.838",
+          "0.661",
+          "0.843",
+          "0.645"
+        ],
+        [
+          "Fixed 30, seed 2209",
+          "0.858",
+          "0.686",
+          "0.852",
+          "0.627"
+        ],
+        [
+          "Fixed 30, seed 3309",
+          "0.855",
+          "0.642",
+          "0.841",
+          "0.640"
+        ],
+        [
+          "Balanced stopping, 3 seeds",
+          "0.859",
+          "0.631",
+          "0.859",
+          "0.637"
+        ],
+        [
+          "Strict quality, seed 1109",
+          "0.849",
+          "0.688",
+          "0.839",
+          "0.644"
+        ],
+        [
+          "Age/sex matched, seed 1109",
+          "0.839",
+          "0.540",
+          "0.811",
+          "0.536"
+        ],
+        [
+          "Long trajectory, epoch 10",
+          "0.855",
+          "0.617",
+          "0.863",
+          "0.651"
+        ],
+        [
+          "Long trajectory, epoch 20",
+          "0.859",
+          "0.650",
+          "0.856",
+          "0.636"
+        ],
+        [
+          "Long trajectory, epoch 30",
+          "0.838",
+          "0.661",
+          "0.843",
+          "0.645"
+        ],
+        [
+          "Long trajectory, epoch 60",
+          "0.834",
+          "0.704",
+          "0.835",
+          "0.668"
+        ],
+        [
+          "Long trajectory, epoch 100",
+          "0.834",
+          "0.730",
+          "0.836",
+          "0.665"
+        ],
+        [
+          "Alternative partition 10",
+          "0.876",
+          "0.677",
+          "0.864",
+          "0.638"
+        ],
+        [
+          "Alternative partition 11",
+          "0.864",
+          "0.652",
+          "0.867",
+          "0.621"
+        ]
+      ]
+    },
+    {
+      "id": "baselines",
+      "caption": "Alternative predictors and representations in TDBRAIN",
+      "columns": [
+        "Predictor",
+        "AUC [95% CI]",
+        "BA",
+        "Brier"
+      ],
+      "rows": [
+        [
+          "Age and sex",
+          "0.553 [0.467, 0.642]",
+          "0.549",
+          "0.249"
+        ],
+        [
+          "Signal and ocular quality",
+          "0.743 [0.666, 0.816]",
+          "0.663",
+          "0.208"
+        ],
+        [
+          "Archive membership",
+          "0.822 [0.736, 0.898]",
+          "0.857",
+          "0.093"
+        ],
+        [
+          "Common signal, uncorrected",
+          "0.801 [0.735, 0.865]",
+          "0.747",
+          "0.184"
+        ],
+        [
+          "Common signal, ocular regression",
+          "0.846 [0.791, 0.901]",
+          "0.770",
+          "0.162"
+        ],
+        [
+          "Acquisition spectral",
+          "0.858 [0.807, 0.905]",
+          "0.791",
+          "0.162"
+        ],
+        [
+          "Average spectral",
+          "0.688 [0.606, 0.764]",
+          "0.621",
+          "0.234"
+        ],
+        [
+          "Demographics and quality",
+          "0.747 [0.673, 0.819]",
+          "0.669",
+          "0.206"
+        ],
+        [
+          "CSD EEGNet, uncorrected",
+          "0.636 [0.555, 0.718]",
+          "0.595",
+          "0.285"
+        ],
+        [
+          "CSD EEGNet, ocular regression",
+          "0.659 [0.575, 0.736]",
+          "0.602",
+          "0.293"
+        ]
+      ]
+    },
+    {
+      "id": "rms",
+      "caption": "Participant-wise RMS normalization and reference-dependent discrimination",
+      "columns": [
+        "Representation",
+        "AUC",
+        "95% CI"
+      ],
+      "rows": [
+        [
+          "Original linked-mastoid",
+          "0.838",
+          "[0.780, 0.890]"
+        ],
+        [
+          "Original CAR",
+          "0.661",
+          "[0.574, 0.745]"
+        ],
+        [
+          "RMS-normalized linked-mastoid",
+          "0.860",
+          "[0.805, 0.909]"
+        ],
+        [
+          "RMS-normalized CAR",
+          "0.681",
+          "[0.596, 0.763]"
+        ],
+        [
+          "Contrast",
+          "AUC difference",
+          "95% CI"
+        ],
+        [
+          "Normalized minus original, linked-mastoid",
+          "0.022",
+          "[-0.006, 0.051]"
+        ],
+        [
+          "Normalized minus original, CAR",
+          "0.020",
+          "[-0.034, 0.074]"
+        ],
+        [
+          "Linked-mastoid minus CAR, original",
+          "0.177",
+          "[0.094, 0.260]"
+        ],
+        [
+          "Linked-mastoid minus CAR, normalized",
+          "0.179",
+          "[0.098, 0.259]"
+        ],
+        [
+          "Change in reference contrast",
+          "0.002",
+          "[-0.052, 0.057]"
+        ]
+      ]
+    },
+    {
+      "id": "common",
+      "caption": "Component retraining and inference-only removal",
+      "columns": [
+        "Comparison",
+        "AUC / change",
+        "95% interval"
+      ],
+      "rows": [
+        [
+          "Common signal only",
+          "0.772",
+          "0.700--0.840"
+        ],
+        [
+          "Common signal removed (CAR)",
+          "0.673",
+          "0.586--0.750"
+        ],
+        [
+          "Inference removal, seed 1109",
+          "0.526",
+          "---"
+        ],
+        [
+          "Paired AUC change after inference removal",
+          "-0.312",
+          "-0.406-- -0.217"
+        ]
+      ]
+    },
+    {
+      "id": "sourcechecks",
+      "caption": "Recording-duration and frequency sensitivities",
+      "columns": [
+        "Comparison",
+        "AUC / change",
+        "95% interval"
+      ],
+      "rows": [
+        [
+          "121-second recording stratum: linked-mastoid",
+          "0.935",
+          "0.895--0.969"
+        ],
+        [
+          "Same stratum: CAR",
+          "0.663",
+          "0.560--0.758"
+        ],
+        [
+          "Same stratum: linked-mastoid minus CAR",
+          "0.273",
+          "0.173--0.377"
+        ],
+        [
+          "Low-frequency common features (1--20 Hz)",
+          "0.794",
+          "---"
+        ],
+        [
+          "Higher-frequency common features (>20--40 Hz)",
+          "0.766",
+          "---"
+        ],
+        [
+          "Higher minus low-frequency AUC",
+          "-0.028",
+          "-0.097--0.037"
+        ],
+        [
+          "Adding higher to low-frequency features: AUC change",
+          "0.008",
+          "-0.017--0.034"
+        ]
+      ]
+    },
+    {
+      "id": "power",
+      "caption": "Common and CAR bandpower group differences in 186 participants",
+      "columns": [
+        "Band",
+        "Common ratio [95% CI]",
+        "Common g",
+        "CAR ratio [95% CI]",
+        "CAR g"
+      ],
+      "rows": [
+        [
+          "Delta",
+          "0.611 [0.514, 0.734]",
+          "-0.829",
+          "0.874 [0.725, 1.063]",
+          "-0.208"
+        ],
+        [
+          "Theta",
+          "0.637 [0.515, 0.788]",
+          "-0.640",
+          "0.964 [0.775, 1.198]",
+          "-0.051"
+        ],
+        [
+          "Alpha",
+          "0.548 [0.418, 0.715]",
+          "-0.719",
+          "0.840 [0.605, 1.165]",
+          "-0.163"
+        ],
+        [
+          "Beta",
+          "0.465 [0.381, 0.568]",
+          "-1.009",
+          "0.879 [0.734, 1.057]",
+          "-0.202"
+        ],
+        [
+          "Gamma",
+          "0.366 [0.270, 0.505]",
+          "-0.931",
+          "0.794 [0.650, 0.975]",
+          "-0.308"
+        ],
+        [
+          "Total 1--40 Hz",
+          "0.571 [0.480, 0.679]",
+          "-0.929",
+          "0.875 [0.716, 1.070]",
+          "-0.194"
+        ]
+      ]
+    },
+    {
+      "id": "auxiliary",
+      "caption": "Complete common-bandpower covariate comparisons",
+      "columns": [
+        "Model/residualization covariates",
+        "AUC [95% CI]",
+        "Log loss",
+        "Balanced log loss"
+      ],
+      "rows": [
+        [
+          "Common bands, unadjusted",
+          "0.802 [0.732, 0.865]",
+          "0.541",
+          "0.543"
+        ],
+        [
+          "Common bands, age/sex residualization",
+          "0.800 [0.731, 0.864]",
+          "0.548",
+          "0.549"
+        ],
+        [
+          "Common bands, age/sex and six quality measures",
+          "0.712 [0.630, 0.788]",
+          "0.693",
+          "0.679"
+        ],
+        [
+          "Common bands, demographic/quality bundle plus heart rate",
+          "0.704 [0.621, 0.782]",
+          "0.699",
+          "0.685"
+        ],
+        [
+          "Common bands, demographic/quality bundle plus MASS and F1",
+          "0.755 [0.682, 0.823]",
+          "0.656",
+          "0.630"
+        ],
+        [
+          "Heart rate only",
+          "0.517 [0.425, 0.610]",
+          "0.696",
+          "0.698"
+        ],
+        [
+          "MASS and detector-agreement F1 only",
+          "0.519 [0.427, 0.613]",
+          "0.698",
+          "0.699"
+        ]
+      ]
+    },
+    {
+      "id": "archivepower",
+      "caption": "Total power contrasts within archive-annotation subgroups",
+      "columns": [
+        "Contrast",
+        "Common ratio [95% CI]",
+        "CAR ratio [95% CI]"
+      ],
+      "rows": [
+        [
+          "Annotated ADHD / control",
+          "0.533 [0.434, 0.654]",
+          "0.843 [0.664, 1.068]"
+        ],
+        [
+          "Unannotated ADHD / control",
+          "0.679 [0.551, 0.831]",
+          "0.959 [0.726, 1.251]"
+        ],
+        [
+          "Annotated / unannotated ADHD",
+          "0.785 [0.613, 1.007]",
+          "0.878 [0.640, 1.208]"
+        ],
+        [
+          "Annotated ADHD / control",
+          "0.532 [0.436, 0.654]",
+          "0.820 [0.648, 1.040]"
+        ],
+        [
+          "Unannotated ADHD / control",
+          "0.678 [0.552, 0.832]",
+          "0.947 [0.721, 1.238]"
+        ],
+        [
+          "Annotated / unannotated ADHD",
+          "0.785 [0.616, 1.008]",
+          "0.866 [0.635, 1.186]"
+        ]
+      ]
+    },
+    {
+      "id": "erbs",
+      "caption": "EEG RMS and auxiliary event-template amplitude",
+      "columns": [
+        "Comparison",
+        "Estimate",
+        "95% interval"
+      ],
+      "rows": [
+        [
+          "Median channel RMS arithmetic mean, ADHD (µV)",
+          "9.36",
+          "---"
+        ],
+        [
+          "Median channel RMS arithmetic mean, controls (µV)",
+          "11.55",
+          "---"
+        ],
+        [
+          "Erbs amplitude ADHD/control ratio, N=186",
+          "1.014",
+          "0.843--1.209"
+        ],
+        [
+          "Erbs raw mean difference (µV), N=186",
+          "7.35",
+          "-30.75--45.93"
+        ],
+        [
+          "Erbs Hedges' g, N=186",
+          "0.060",
+          "-0.252--0.391"
+        ],
+        [
+          "Erbs amplitude ratio, N=189",
+          "1.055",
+          "0.874--1.268"
+        ]
+      ]
+    },
+    {
+      "id": "xai",
+      "caption": "Ocular-regression effect on regional perturbation faithfulness",
+      "columns": [
+        "Evaluation",
+        "Method",
+        "Mean [95% CI]"
+      ],
+      "rows": [
+        [
+          "Additional seeds",
+          "IG",
+          "-0.047 [-0.223, 0.118]"
+        ],
+        [
+          "Additional seeds",
+          "DeepSHAP",
+          "-0.044 [-0.226, 0.134]"
+        ],
+        [
+          "Earlier seed",
+          "IG",
+          "-0.046 [-0.275, 0.185]"
+        ],
+        [
+          "Earlier seed",
+          "DeepSHAP",
+          "-0.069 [-0.302, 0.172]"
+        ],
+        [
+          "All three seeds",
+          "IG",
+          "-0.047 [-0.179, 0.092]"
+        ],
+        [
+          "All three seeds",
+          "DeepSHAP",
+          "-0.052 [-0.190, 0.101]"
+        ]
+      ]
+    },
+    {
+      "id": "randomization",
+      "caption": "Signed regional IG dependence on parameters and labels",
+      "columns": [
+        "Earlier control, averaged over processing arms",
+        "Mean correlation",
+        "95% interval"
+      ],
+      "rows": [
+        [
+          "Fully initialized network",
+          "0.022",
+          "-0.080--0.131"
+        ],
+        [
+          "Permuted-label training",
+          "0.011",
+          "-0.081--0.108"
+        ]
+      ]
+    },
+    {
+      "id": "randomization_progressive",
+      "caption": "Signed regional IG dependence on parameters and labels — progressive resets",
+      "columns": [
+        "Progressive reset",
+        "LM",
+        "CAR",
+        "LM + EOG",
+        "CAR + EOG"
+      ],
+      "rows": [
+        [
+          "Classifier",
+          "0.233",
+          "-0.067",
+          "0.167",
+          "0.167"
+        ],
+        [
+          "Classifier and separable block",
+          "0.033",
+          "0.017",
+          "-0.067",
+          "0.100"
+        ],
+        [
+          "Full network",
+          "0.017",
+          "-0.017",
+          "0.117",
+          "-0.000"
+        ]
+      ]
+    },
+    {
+      "id": "kappa",
+      "caption": "Pairwise top-region agreement across initializations and references",
+      "columns": [
+        "Method and processing",
+        "Comparison",
+        "Raw agreement",
+        "Mean pairwise kappa [95% CI]"
+      ],
+      "rows": [
+        [
+          "IG without ocular regression, predicted-class target",
+          "Within linked-mastoid",
+          "70.8%",
+          "0.494 [0.327, 0.652]"
+        ],
+        [
+          "IG without ocular regression, predicted-class target",
+          "Within CAR",
+          "63.3%",
+          "0.398 [0.229, 0.567]"
+        ],
+        [
+          "IG without ocular regression, predicted-class target",
+          "Within references, pooled",
+          "67.1%",
+          "0.446 [0.328, 0.560]"
+        ],
+        [
+          "IG without ocular regression, predicted-class target",
+          "Across references, same initialization",
+          "30.0%",
+          "0.111 [0.019, 0.203]"
+        ],
+        [
+          "IG without ocular regression, predicted-class target",
+          "Within minus cross-reference",
+          "37.1 pp",
+          "0.335 [0.192, 0.477]"
+        ],
+        [
+          "IG with ocular regression, predicted-class target",
+          "Within linked-mastoid",
+          "67.5%",
+          "0.504 [0.339, 0.658]"
+        ],
+        [
+          "IG with ocular regression, predicted-class target",
+          "Within CAR",
+          "55.8%",
+          "0.310 [0.148, 0.470]"
+        ],
+        [
+          "IG with ocular regression, predicted-class target",
+          "Within references, pooled",
+          "61.7%",
+          "0.407 [0.295, 0.510]"
+        ],
+        [
+          "IG with ocular regression, predicted-class target",
+          "Across references, same initialization",
+          "37.5%",
+          "0.161 [0.055, 0.267]"
+        ],
+        [
+          "IG with ocular regression, predicted-class target",
+          "Within minus cross-reference",
+          "24.2 pp",
+          "0.246 [0.108, 0.380]"
+        ],
+        [
+          "DeepSHAP without ocular regression, predicted-class target",
+          "Within linked-mastoid",
+          "72.5%",
+          "0.526 [0.364, 0.681]"
+        ],
+        [
+          "DeepSHAP without ocular regression, predicted-class target",
+          "Within CAR",
+          "63.3%",
+          "0.410 [0.245, 0.574]"
+        ],
+        [
+          "DeepSHAP without ocular regression, predicted-class target",
+          "Within references, pooled",
+          "67.9%",
+          "0.468 [0.354, 0.577]"
+        ],
+        [
+          "DeepSHAP without ocular regression, predicted-class target",
+          "Across references, same initialization",
+          "30.8%",
+          "0.121 [0.023, 0.218]"
+        ],
+        [
+          "DeepSHAP without ocular regression, predicted-class target",
+          "Within minus cross-reference",
+          "37.1 pp",
+          "0.348 [0.205, 0.489]"
+        ],
+        [
+          "IG without ocular regression, fixed ADHD-logit target",
+          "Within linked-mastoid",
+          "69.2%",
+          "0.590 [0.461, 0.714]"
+        ],
+        [
+          "IG without ocular regression, fixed ADHD-logit target",
+          "Within CAR",
+          "62.5%",
+          "0.477 [0.327, 0.621]"
+        ],
+        [
+          "IG without ocular regression, fixed ADHD-logit target",
+          "Within references, pooled",
+          "65.8%",
+          "0.534 [0.432, 0.629]"
+        ],
+        [
+          "IG without ocular regression, fixed ADHD-logit target",
+          "Across references, same initialization",
+          "36.7%",
+          "0.187 [0.071, 0.302]"
+        ],
+        [
+          "IG without ocular regression, fixed ADHD-logit target",
+          "Within minus cross-reference",
+          "29.2 pp",
+          "0.347 [0.205, 0.486]"
+        ]
+      ]
+    },
+    {
+      "id": "external",
+      "caption": "Provisional frozen-model evaluation in Wroclaw",
+      "columns": [
+        "Cohort",
+        "Model / processing",
+        "AUC [95% CI]",
+        "BA",
+        "Brier"
+      ],
+      "rows": [
+        [
+          "Wroclaw",
+          "EEGNet, acq.",
+          "0.250 [0.016, 0.516]",
+          "0.438",
+          "0.361"
+        ],
+        [
+          "Wroclaw",
+          "EEGNet, avg.",
+          "0.453 [0.156, 0.766]",
+          "0.500",
+          "0.313"
+        ],
+        [
+          "Wroclaw",
+          "Acq. minus avg. AUC",
+          "-0.203 [-0.438, 0.016]",
+          "---",
+          "---"
+        ]
+      ]
+    },
+    {
+      "id": "externalpower",
+      "caption": "External total-power group ratios",
+      "columns": [
+        "Cohort",
+        "Common",
+        "CAR",
+        "Common/CAR"
+      ],
+      "rows": [
+        [
+          "Wroclaw",
+          "1.067 [0.715, 1.601]",
+          "1.190 [0.780, 1.843]",
+          "0.897 [0.756, 1.085]"
+        ],
+        [
+          "Nasrabadi",
+          "1.007 [0.766, 1.314]",
+          "0.888 [0.757, 1.042]",
+          "1.133 [0.918, 1.383]"
+        ]
+      ]
+    },
+    {
+      "id": "xaisens",
+      "caption": "Sensitivity of signed regional Integrated Gradients rankings",
+      "columns": [
+        "Comparison",
+        "Acq.",
+        "Avg.",
+        "Acq.+EOG",
+        "Avg.+EOG"
+      ],
+      "rows": [
+        [
+          "Seed 2209",
+          "0.850",
+          "0.600",
+          "0.900",
+          "0.700"
+        ],
+        [
+          "Seed 3309",
+          "0.900",
+          "0.600",
+          "0.900",
+          "0.700"
+        ],
+        [
+          "Zero background",
+          "0.350",
+          "0.400",
+          "0.450",
+          "0.000"
+        ],
+        [
+          "32-person background",
+          "0.900",
+          "0.750",
+          "0.900",
+          "0.850"
+        ],
+        [
+          "Reset classifier",
+          "0.233",
+          "-0.067",
+          "0.167",
+          "0.167"
+        ],
+        [
+          "Reset separable",
+          "0.033",
+          "0.017",
+          "-0.067",
+          "0.100"
+        ],
+        [
+          "Reset all",
+          "0.017",
+          "-0.017",
+          "0.117",
+          "-0.000"
+        ],
+        [
+          "Early vs late segment",
+          "1.000",
+          "0.900",
+          "1.000",
+          "0.900"
+        ]
+      ]
+    },
+    {
+      "id": "perturb",
+      "caption": "Sensitivity to deletion curves and donor replacement",
+      "columns": [
+        "Processing",
+        "Method",
+        "Deletion difference",
+        "Donor difference"
+      ],
+      "rows": [
+        [
+          "Acq., no EOG",
+          "IG",
+          "0.082 [0.030, 0.130]",
+          "0.104 [0.025, 0.180]"
+        ],
+        [
+          "Acq., no EOG",
+          "DeepSHAP",
+          "0.084 [0.032, 0.133]",
+          "0.104 [0.025, 0.180]"
+        ],
+        [
+          "Avg., no EOG",
+          "IG",
+          "0.048 [0.017, 0.079]",
+          "0.048 [-0.010, 0.102]"
+        ],
+        [
+          "Avg., no EOG",
+          "DeepSHAP",
+          "0.049 [0.017, 0.081]",
+          "0.053 [-0.001, 0.106]"
+        ],
+        [
+          "Acq., EOG",
+          "IG",
+          "0.133 [0.088, 0.177]",
+          "0.102 [0.043, 0.161]"
+        ],
+        [
+          "Acq., EOG",
+          "DeepSHAP",
+          "0.135 [0.090, 0.179]",
+          "0.102 [0.043, 0.161]"
+        ],
+        [
+          "Avg., EOG",
+          "IG",
+          "0.044 [0.015, 0.075]",
+          "0.052 [-0.000, 0.105]"
+        ],
+        [
+          "Avg., EOG",
+          "DeepSHAP",
+          "0.045 [0.014, 0.077]",
+          "0.052 [-0.000, 0.105]"
+        ]
+      ]
+    },
+    {
+      "id": "marginal",
+      "caption": "Top-region agreement across references and its marginal comparator",
+      "columns": [
+        "Initialization",
+        "Ocular regression",
+        "Observed",
+        "Marginal expected"
+      ],
+      "rows": [
+        [
+          "1109",
+          "No",
+          "0.300",
+          "0.226"
+        ],
+        [
+          "1109",
+          "Yes",
+          "0.450",
+          "0.308"
+        ],
+        [
+          "2209",
+          "No",
+          "0.325",
+          "0.194"
+        ],
+        [
+          "2209",
+          "Yes",
+          "0.375",
+          "0.251"
+        ],
+        [
+          "3309",
+          "No",
+          "0.275",
+          "0.216"
+        ],
+        [
+          "3309",
+          "Yes",
+          "0.300",
+          "0.211"
+        ]
+      ]
+    },
+    {
+      "id": "architecture",
+      "caption": "Network architecture and optimization settings",
+      "columns": [
+        "Component",
+        "EEGNet-style model",
+        "Temporal CNN"
+      ],
+      "rows": [
+        [
+          "Temporal extraction",
+          "Eight kernels of length 64; asymmetric padding 31/32",
+          "Conv1d: 19 to 16 channels; kernel 31"
+        ],
+        [
+          "Spatial/second block",
+          "Depthwise convolution across 19 channels; multiplier two",
+          "Conv1d: 16 to 32 channels; kernel 15"
+        ],
+        [
+          "Final convolution",
+          "Depthwise temporal kernel 16; pointwise output 16",
+          "Conv1d: 32 to 32 channels; kernel seven"
+        ],
+        [
+          "Pooling",
+          "Average pooling by four and eight",
+          "Average pooling by four after each block; temporal mean after final block"
+        ],
+        [
+          "Activation/dropout",
+          "ELU; dropout 0.5 after each pooling layer",
+          "ELU; dropout 0.5 after each pooling layer"
+        ],
+        [
+          "Normalization",
+          "Three batch-normalization layers; epsilon 0.001; momentum 0.01",
+          "Same epsilon and momentum"
+        ],
+        [
+          "Head",
+          "400 to one linear output",
+          "32 to one linear output"
+        ],
+        [
+          "Constraints",
+          "Spatial-filter max norm one; head max norm 0.25",
+          "No max-norm constraint"
+        ],
+        [
+          "Trainable parameters",
+          "1809",
+          "24,545"
+        ]
+      ]
+    },
+    {
+      "id": "spectral_residualization",
+      "caption": "Training-only residualized spectral comparisons",
+      "columns": [
+        "Predictor",
+        "AUC [95% CI]",
+        "BA",
+        "Brier"
+      ],
+      "rows": [
+        [
+          "Residualized acquisition spectral",
+          "0.702 [0.627, 0.778]",
+          "0.592",
+          "0.247"
+        ],
+        [
+          "Residualized average spectral",
+          "0.632 [0.549, 0.714]",
+          "0.588",
+          "0.272"
+        ]
+      ]
+    }
+  ]
+}

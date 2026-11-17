@@ -131,6 +131,8 @@ TDBRAIN V3.1 requires the provider's access process. Wroclaw and Nasrabadi are o
 
 Cinbat, A., Şentürk, Ü., & Yücedağ, İ. *The EEG component removed by average referencing carries ADHD classification in resting EEG*. Manuscript.
 
+The code version used in the article is [v1.0.0](https://github.com/alptekin254802/eeg-reference-dependence/tree/v1.0.0), archived at [doi:10.5281/zenodo.24309391](https://doi.org/10.5281/zenodo.24309391). The [all-versions DOI](https://doi.org/10.5281/zenodo.24309390) identifies the software across releases and resolves to the latest version. Use the version-specific DOI when citing the article's computational results.
+
 Machine-readable author metadata are in [CITATION.cff](CITATION.cff). Please also cite the original datasets and the methods used in your analysis.
 
 ## License

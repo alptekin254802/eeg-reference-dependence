@@ -13,3 +13,8 @@ authors:
     given-names: İbrahim
     orcid: "https://orcid.org/0000-0003-2975-7392"
 license: MIT
+version: v1.0.0
+date-released: 2026-11-17
+doi: 10.5281/zenodo.24309391
+repository-code: "https://github.com/alptekin254802/eeg-reference-dependence"
+url: "https://doi.org/10.5281/zenodo.24309391"

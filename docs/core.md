@@ -100,6 +100,8 @@ python analysis/core/report.py --input outputs/cache --plan outputs/core_plan.js
 
 `classification.json` contains aggregate classifier metrics and paired reference contrasts, including the 155-person duration analysis and common-only retraining. It reports each initialization, all retained long-trajectory checkpoints and complete three-initialization probability ensembles. Incomplete groups are identified under `unavailable` and are not promoted to complete estimates. Classification intervals use 2,000 diagnosis-stratified participant bootstrap draws with seed 20261110; matched comparisons instead resample whole pairs. Common-only and duration AUC intervals preserve the positive-first draw ordering of their separate exploratory analysis; the duration contrast uses its explicitly resampled participant-index draws. The JSON contains no participant rows. It can be compared with the corresponding source-classification and exploratory common-component estimates in `results/aggregate.json`. Frequency-vector contrasts in Section S4 are high-two minus low-four and all-six minus low-four; the report preserves this direction.
 
+The same command additionally writes `within_fold_auc.json`, a same-fold positive-negative-pair-weighted AUC sensitivity. See [the definition, calculation-only command and expected values](within_fold_auc.md).
+
 ## Dependencies
 
 Metadata reconstruction requires pandas and openpyxl; signal preparation requires NumPy, SciPy and MNE; classical analyses require scikit-learn; neural training requires PyTorch. The reported neural runtime is PyTorch 2.0.1+cu118 with NumPy 1.26.4. Reproducing the published values requires the source data, complete requested model groups and matching analysis settings.

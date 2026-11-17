@@ -20,7 +20,7 @@ scripts/          Figure and table generation; aggregate consistency checks
 docs/             Implementation details, numerical checks and analysis commands
 ```
 
-`results/aggregate.json` contains full-precision group estimates. `results/figure_values.json` identifies the 52 statistics used by the main figures. `results/tables.json` contains the tabulated supplement results. Confidence intervals condition on the fitted models and the stated resampling unit; the paper and supplement define their interpretation.
+`results/aggregate.json` contains full-precision group estimates. `results/figure_values.json` identifies the 52 statistics used by the main figures. `results/tables.json` contains the tabulated supplement results. `results/within_fold_auc.json` contains the supplementary point estimates comparing pooled and within-fold AUC. Confidence intervals condition on the fitted models and the stated resampling unit; the paper and supplement define their interpretation.
 
 The [analysis details](docs/analysis_details.md) and [additional analyses](docs/additional_analyses.md) accompany Online Resource 1. The [documentation index](docs/README.md) links all analysis guides. The [implementation guide](docs/methods_details.md) lists network settings and sampling seeds; [numerical validation](docs/numerical_validation.md) records tolerances and verification counts.
 
@@ -96,6 +96,16 @@ Obtain the datasets through [the documented access routes](docs/data.md). The li
 
 Neural commands fit multiple participant-fold models and can take substantial time. Choose the documented analysis modules explicitly. Statistical resampling uses stored held-out predictions rather than refitting models in every bootstrap replicate. Exact scalar equality is appropriate for aggregate rendering; neural numerical agreement depends on the stated runtime and hardware.
 
+## Within-fold AUC from saved predictions
+
+The [within-fold AUC guide](docs/within_fold_auc.md) compares positive-negative pairs scored by the same held-out-fold model, weighted by each fold's pair count. It uses existing training outputs and performs no model fitting:
+
+```sh
+python -B analysis/core/report.py --input outputs/cache --plan outputs/core_plan.json outputs/sensitivity_plan.json --training outputs/training outputs/sensitivity_training --spectral outputs/spectral/oof_predictions.npz --output outputs/within_fold_report --within-fold-only
+```
+
+The output is `outputs/within_fold_report/within_fold_auc.json`. For the main ensemble, the recorded within-fold AUCs are 0.869711 for linked-mastoid and 0.670920 for common-average reference. Complete outputs from the core pipeline are required; the guide lists all six comparisons and software checks.
+
 ## Assess reference dependence in another dataset
 
 [`assess_reference_dependence`](reference_dependence/assessment.py) compares full-input classification, common-only retraining, inference-only common removal and CAR retraining using the same participant folds. The default model uses bandpower and logistic regression; an optional adapter uses the study's EEGNet architecture.
@@ -131,7 +141,7 @@ TDBRAIN V3.1 requires the provider's access process. Wroclaw and Nasrabadi are o
 
 Cinbat, A., Şentürk, Ü., & Yücedağ, İ. *The EEG component removed by average referencing carries ADHD classification in resting EEG*. Manuscript.
 
-The code version used in the article is [v1.0.0](https://github.com/alptekin254802/eeg-reference-dependence/tree/v1.0.0), archived at [doi:10.5281/zenodo.24309391](https://doi.org/10.5281/zenodo.24309391). The [all-versions DOI](https://doi.org/10.5281/zenodo.24309390) identifies the software across releases and resolves to the latest version. Use the version-specific DOI when citing the article's computational results.
+The article's analysis code and supplementary within-fold AUC calculation are provided in [v1.0.1](https://github.com/alptekin254802/eeg-reference-dependence/tree/v1.0.1). The [all-versions DOI](https://doi.org/10.5281/zenodo.24309390) identifies the archived software across releases. Use a version-specific identifier when citing the computational results.
 
 Machine-readable author metadata are in [CITATION.cff](CITATION.cff). Please also cite the original datasets and the methods used in your analysis.
 

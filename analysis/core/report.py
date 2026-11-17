@@ -6,9 +6,10 @@ from scipy.special import expit
 from sklearn.metrics import roc_auc_score,average_precision_score
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'external'))
 from metrics import PersonBootstrap
+from within_fold_auc import sensitivity
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--input',type=Path,required=True);p.add_argument('--plan',type=Path,nargs='+',required=True);p.add_argument('--training',type=Path,nargs='+',required=True);p.add_argument('--spectral',type=Path);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--input',type=Path,required=True);p.add_argument('--plan',type=Path,nargs='+',required=True);p.add_argument('--training',type=Path,nargs='+',required=True);p.add_argument('--spectral',type=Path);p.add_argument('--output',type=Path,required=True);p.add_argument('--within-fold-only',action='store_true',help='Reaggregate saved probabilities without bootstrap calculations');a=p.parse_args()
     y=np.load(a.input/'labels.npy');jobs={};pairs=[]
     for path in a.plan:
         plan=json.loads(path.read_text());pairs=plan.get('cohort_metadata',{}).get('matching_pairs',pairs)
@@ -44,6 +45,13 @@ def main():
         with np.load(a.spectral) as archive:
             for key in archive.files:
                 q=archive[key];ii=np.flatnonzero(np.isfinite(q));predictions['spectral/'+key]=(ii.tolist(),q[ii])
+    original_folds=json.loads((a.input/'folds.json').read_text())
+    within_fold=sensitivity(y,predictions,jobs,original_folds)
+    a.output.mkdir(parents=True,exist_ok=True)
+    (a.output/'within_fold_auc.json').write_text(json.dumps(within_fold,indent=2,allow_nan=False)+'\n')
+    if a.within_fold_only:
+        print('Wrote',len(within_fold['comparisons']),'within-fold AUC comparisons')
+        return
     def pair_samples(ids,q):
         index={v:k for k,v in enumerate(ids)};pair=np.array([[index[x],index[z]] for x,z in pairs]);rng=np.random.default_rng(20261110);auc=[];ba=[]
         for _ in range(2000):

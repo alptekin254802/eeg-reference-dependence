@@ -9,6 +9,7 @@ These guides accompany Online Resource 1, Sections S1–S7, of *The EEG componen
 | [Analysis definitions and implementation](analysis_details.md) | Detailed study methods linked from the supplement | S2–S7 |
 | [Additional analyses](additional_analyses.md) | Registered ancillary explanation and spectral results | S1, S3, S6 |
 | [Core analyses](core.md) | Cohort reconstruction, preprocessing, classification and sensitivity commands | S2–S4 |
+| [Within-fold AUC](within_fold_auc.md) | Saved-prediction sensitivity to cross-fold score comparisons | S3 |
 | [Components and covariates](components.md) | Power, auxiliary signals, adjustment and RMS normalization commands | S5 |
 | [Explanations](explanations.md) | Attribution, perturbation and agreement commands | S6 |
 | [External analyses](external.md) | External preparation, transport and power commands | S7 |

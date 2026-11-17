@@ -182,7 +182,7 @@ def figure4():
     def arm(k):
         return vals[a.format(k) + "/estimate"], vals[a.format(k) + "/ci95"]
     spec = [("B0", "Unadjusted"), ("BAge", "Age, sex"), ("BD", "Age, sex, quality"),
-            ("BH", " + heart rate"), ("BM", " + Mass power, beat F1")]
+            ("BH", " + heart rate"), ("BM", " + MASS power,\ndetector-agreement F1")]
     rows = []
     for i, (k, lab) in enumerate(spec):
         e, ci = arm(k)

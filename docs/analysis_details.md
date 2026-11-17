@@ -33,13 +33,13 @@ Age/sex matching pairs each ADHD participant with one control of the same record
 
 ## Participant-wise RMS normalization control
 
-The later amplitude-scale control used the same 189 participants, two references without ocular regression and five outer folds. For each participant and reference, one scalar was calculated across all fifteen windows, nineteen channels and 800 samples per window:
+The participant-wise RMS comparison used the same 189 participants, two references without ocular regression and five outer folds. For each participant and reference, one scalar was calculated across all fifteen windows, nineteen channels and 800 samples per window:
 $$
  s_i=\sqrt{\frac{1}{15\cdot19\cdot800}\sum_{w,c,t} X_i(w,c,t)^2},\qquad \widetilde X_i=X_i/s_i.
 $$
-All scales were positive and finite. Division was performed separately within each reference, without diagnosis information, and preserved within-record channel and window amplitude ratios. The original training-derived scalar normalization was retained after this operation and was numerically close to one. Each reference was retrained for 30 epochs with seed 1109 plus the historical fold offset, unchanged architecture, batches, optimizer and weight constraints. No channel-specific normalization, model selection or additional partition was introduced.
+All scales were positive and finite. Division was performed separately within each reference, without diagnosis information, and preserved within-record channel and window amplitude ratios. The original training-derived scalar normalization was retained after this operation and was numerically close to one. Each reference was retrained for 30 epochs with seed 1109 plus the fold-specific offset, unchanged architecture, batches, optimizer and weight constraints. No channel-specific normalization, model selection or additional partition was introduced.
 
-The ten normalized fits were compared with the ten saved seed-1109, 30-epoch baseline checkpoints, using the same neural environment specified in `docs/methods_details.md`. A preliminary fit in a different runtime was excluded before outcome evaluation. All matched-runtime fits are retained. The primary contrasts are normalized minus original AUC within each reference, linked-mastoid minus CAR within each scaling condition, and the change in that reference contrast. Shared 20,000 diagnosis-stratified participant bootstrap draws carry all four out-of-fold predictions jointly. Their intervals condition on these fitted models and do not capture retraining variability. This control changes signal scaling before model fitting; it is not a causal decomposition of classification performance.
+The ten normalized fits were compared with the ten saved seed-1109, 30-epoch baseline checkpoints, using the same neural environment specified in `docs/methods_details.md`. The primary contrasts are normalized minus original AUC within each reference, linked-mastoid minus CAR within each scaling condition, and the change in that reference contrast. Shared 20,000 diagnosis-stratified participant bootstrap draws carry all four out-of-fold predictions jointly. Their intervals condition on these fitted models and do not capture retraining variability. This control changes signal scaling before model fitting; it is not a causal decomposition of classification performance.
 
 The linked-mastoid-minus-CAR AUC contrast was 0.177 before normalization and 0.179 afterwards. Its change was 0.002 (95% interval -0.052 to 0.057). Normalized-minus-original AUC changes were 0.022 (-0.006 to 0.051) for linked-mastoid and 0.020 (-0.034 to 0.074) for CAR. These conditional results retain the reference advantage after removing global record scale, without establishing equivalence or isolating a specific remaining signal feature.
 
@@ -83,7 +83,7 @@ Explanation sensitivity methods and estimates are in [Additional analyses](addit
 ## External power measurements
 Wroclaw uses the first pre-task eyes-closed recording and the source interval and filter settings. Conventional T3, T4, T5 and T6 labels map to T7, T8, P7 and P8. Only acquisition and average reference without ocular regression are evaluated. Native values are provisionally interpreted as microvolts. Header calibration confirms the source TDBRAIN scale, but no corresponding documentation establishes the Wroclaw physical unit. For the registered seed-1109 ensemble of five source-fold models, the provisional acquisition-reference-minus-CAR AUC difference was -0.203 (95% interval -0.438 to 0.016).
 
-## Later external common-power comparisons
+## External common-power comparisons
 
 These exploratory comparisons followed dated local specifications after TDBRAIN outcomes and earlier cohort information were known. They used no new classifier fits. Within each cohort, common power is the power of the 19-channel spatial mean and CAR power is the mean residual-channel power. The five bands and mean-log window aggregation match the source power estimands. Intervals use 20,000 diagnosis-stratified participant bootstrap replicates. The common-to-CAR ratio of ratios subtracts the participant's log CAR power from log common power before the group comparison. This relative measure cancels a uniform within-record gain but does not identify a physiological source. The corresponding tables in Online Resource 1 report all total-power comparisons; all bandwise estimates appear in `results/aggregate.json`.
 
@@ -115,7 +115,7 @@ The spectral logistic model jointly uses 95 window-averaged log-bandpowers, five
 
 ## Common-power model specification
 
-Online Resource 1 gives Welch segmentation, frequency boundaries and the power floor. Online Resource 1 defines mean-log common and CAR power, ratios, Ridge residualization and auxiliary predictors. All transforms use training folds. The amplitude-bearing bundle enters jointly; its effect is not an RMS-specific estimate.
+Online Resource 1 defines Welch segmentation, frequency boundaries, the power floor, common and CAR power ratios, Ridge residualization and auxiliary predictors. All transforms use training folds. The amplitude-bearing bundle enters jointly; its effect is not an RMS-specific estimate.
 
 ## Attribution estimand and numerical limits
 

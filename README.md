@@ -19,7 +19,7 @@ docs/             Implementation details, numerical checks and analysis commands
 
 `results/aggregate.json` contains full-precision group estimates. `results/figure_values.json` identifies the 52 statistics used by the main figures. `results/tables.json` contains the tabulated supplement results. Confidence intervals condition on the fitted models and the stated resampling unit; the paper and supplement define their interpretation.
 
-The [analysis details](docs/analysis_details.md) and [additional analyses](docs/additional_analyses.md) accompany the compact supplement. The [documentation index](docs/README.md) links all analysis guides. [Implementation details](docs/methods_details.md) lists network settings and sampling seeds; [numerical validation](docs/numerical_validation.md) records tolerances and verification counts. These documents accompany Online Resource 1.
+The [analysis details](docs/analysis_details.md) and [additional analyses](docs/additional_analyses.md) accompany Online Resource 1. The [documentation index](docs/README.md) links all analysis guides. The [implementation guide](docs/methods_details.md) lists network settings and sampling seeds; [numerical validation](docs/numerical_validation.md) records tolerances and verification counts.
 
 ## Installation
 

@@ -1,6 +1,6 @@
 # Study documentation
 
-These guides accompany Online Resource 1, Sections S1–S7, of *Common-component power and reference-dependent ADHD classification in TDBRAIN*. They provide implementation settings, numerical checks and reproduction commands. The supplement retains scientific methods, results and limitations.
+These guides accompany Online Resource 1, Sections S1–S7, of *The EEG component removed by average referencing carries ADHD classification in resting EEG*. They provide implementation settings, numerical checks and reproduction commands. The supplement retains scientific methods, results and limitations.
 
 | Guide | Purpose | Online Resource 1 |
 | --- | --- | --- |

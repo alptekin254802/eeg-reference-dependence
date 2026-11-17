@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "Please cite this study when using the analysis code or aggregate results."
-title: "Common-component power and reference-dependent ADHD classification in TDBRAIN"
+title: "The EEG component removed by average referencing carries ADHD classification in resting EEG"
 type: software
 authors:
   - family-names: Cinbat

@@ -1,4 +1,4 @@
-# Common-component power and reference-dependent ADHD classification in TDBRAIN
+# The EEG component removed by average referencing carries ADHD classification in resting EEG
 
 Analysis code and aggregate results for the study by **Alptekin Cinbat, Ümit Şentürk and İbrahim Yücedağ**.
 
@@ -99,7 +99,7 @@ TDBRAIN V3.1 requires the provider's access process. Wroclaw and Nasrabadi are o
 
 ## Citation
 
-Cinbat, A., Şentürk, Ü., & Yücedağ, İ. *Common-component power and reference-dependent ADHD classification in TDBRAIN*. Manuscript.
+Cinbat, A., Şentürk, Ü., & Yücedağ, İ. *The EEG component removed by average referencing carries ADHD classification in resting EEG*. Manuscript.
 
 Machine-readable author metadata are in [CITATION.cff](CITATION.cff). Please also cite the original datasets and the methods used in your analysis.
 

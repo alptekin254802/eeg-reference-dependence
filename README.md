@@ -12,6 +12,9 @@ analysis/
   components/     Power, covariates, auxiliary signals and RMS normalization
   explanations/   Integrated Gradients, DeepSHAP and agreement analyses
   external/       External preparation, transport and power
+reference_dependence/  Reusable participant-level comparison interface
+examples/         Executable simulated EEG example
+tests/            Component comparison and model checks
 results/          Aggregate statistics and tabulated results
 scripts/          Figure and table generation; aggregate consistency checks
 docs/             Implementation details, numerical checks and analysis commands
@@ -92,6 +95,33 @@ Obtain the datasets through [the documented access routes](docs/data.md). The li
 | External component-power comparisons | [External power commands](docs/external.md) | Common-power ratios approximately 1.067 Wroclaw and 1.007 Nasrabadi |
 
 Neural commands fit multiple participant-fold models and can take substantial time. Choose the documented analysis modules explicitly. Statistical resampling uses stored held-out predictions rather than refitting models in every bootstrap replicate. Exact scalar equality is appropriate for aggregate rendering; neural numerical agreement depends on the stated runtime and hardware.
+
+## Assess reference dependence in another dataset
+
+[`assess_reference_dependence`](reference_dependence/assessment.py) compares full-input classification, common-only retraining, inference-only common removal and CAR retraining using the same participant folds. The default model uses bandpower and logistic regression; an optional adapter uses the study's EEGNet architecture.
+
+```python
+from reference_dependence import assess_reference_dependence
+
+result = assess_reference_dependence(
+    eeg, labels, participant_ids,
+    sampling_frequency=200,
+    fold_ids=fold_ids,
+)
+print(result.summary["auc"])
+print(result.summary["contrasts"]["inference_removal_minus_full"])
+```
+
+EEG has shape `(participants, windows, channels, samples)` in microvolts; labels are binary and identifiers are unique per participant. The [usage guide](docs/reference_assessment.md) defines preprocessing requirements, model interfaces, output fields and interval interpretation. Negligible common components, including already-CAR input, make the assessment inapplicable and raise an explicit exception.
+
+Run the software checks and simulated example without participant data:
+
+```sh
+python -B -m unittest discover -s tests -v
+python -B -m examples.reference_dependence --output outputs/reference_assessment.json
+```
+
+The example prints four AUCs for each of two known information locations and saves aggregate summaries. The tests check component transformations, participant separation, training-only scaling and paired bootstrap arithmetic. They run in seconds on a CPU; the optional one-epoch EEGNet check runs only when PyTorch is installed. Exact reproduction of the article's cohort and fitted-model results uses the analysis commands above.
 
 ## Data access
 

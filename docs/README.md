@@ -14,4 +14,6 @@ These guides accompany Online Resource 1, Sections S1–S7, of *The EEG componen
 | [External analyses](external.md) | External preparation, transport and power commands | S7 |
 | [Data access](data.md) | Provider access, input formats and cohort definitions | S2 |
 
+The [reference-dependence interface](reference_assessment.md) applies the component comparisons to participant EEG arrays and documents the accompanying software checks.
+
 Installation and aggregate figure/table commands are in the [repository README](../README.md). Commands run from the repository root. Participant data and model checkpoints require the documented access permissions and are not included in the aggregate-result package.
